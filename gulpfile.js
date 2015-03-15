@@ -1,13 +1,18 @@
-var gulp = require('gulp');
-var wiredep = require('wiredep').stream;
-var plugins = require('gulp-load-plugins')();
+var gulp = require('gulp'),
+    bowerFiles = require('main-bower-files'),
+    wiredep = require('wiredep').stream,
+    plugins = require('gulp-load-plugins')();
 
 gulp.task('default', function() {
-  // place code for your default task here
 });
 
-gulp.task('bower', function () {
-  gulp.src('./app/index.html')
-    .pipe(wiredep({}))
-    .pipe(gulp.dest('./dest'));
+gulp.task('index', function () {
+  var target = gulp.src('./html/index.html');
+  // It's not necessary to read the files (will speed up things), we're only after their paths:
+  var sources = gulp.src(['./src/**/*.js', './src/**/*.css'], {read: false});
+
+  return target
+    .pipe(plugins.inject(sources))
+    .pipe(plugins.inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower'}))
+    .pipe(gulp.dest('./build'));
 });
