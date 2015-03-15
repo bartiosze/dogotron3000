@@ -16,3 +16,10 @@ gulp.task('index', function () {
     .pipe(plugins.inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower'}))
     .pipe(gulp.dest('./build'));
 });
+
+// TODO finish gulp concat
+// 1. concat our scripts
+// 2. concat vendor scripts
+// 3. inject vendor scripts
+gulp.task('pages', function () {
+})

@@ -1,24 +1,30 @@
 {
-  "name": "WebDemo",
-  "version": "0.0.1",
-  "dependencies": {
-    "mithril": "~0.1.30",
-    "purecss": "~0.6.0",
-    "spritespin": "~3.3.2"
-  },
-  "private": true,
-  "authors": [
-    "Bartosz Kaliszuk <bartosz.kaliszuk@gmail.com>"
-  ],
-  "description": "Turnedog new site",
-  "main": "index.html",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "lib/bower",
-    "test",
-    "tests"
-  ]
+    "name": "WebDemo",
+    "version": "0.0.1",
+    "dependencies": {
+        "mithril": "~0.1.30",
+        "purecss": "~0.6.0",
+        "jquery": "~2.1.3",
+        "spritespin": "~3.3.2"
+    },
+    "private": true,
+    "authors": [
+        "Bartosz Kaliszuk <bartosz.kaliszuk@gmail.com>"
+    ],
+    "overrides": {
+        "jquery": {
+            "main": "dist/jquery.min.js"
+        }
+    },
+    "description": "Turnedog new site",
+    "main": "index.html",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "lib/bower",
+        "test",
+        "tests"
+    ]
 }
