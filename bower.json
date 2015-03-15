@@ -2,7 +2,9 @@
   "name": "WebDemo",
   "version": "0.0.1",
   "dependencies": {
-    "mithril": "latest"
+    "mithril": "~0.1.30",
+    "purecss": "~0.6.0",
+    "spritespin": "~3.3.2"
   },
   "private": true,
   "authors": [
