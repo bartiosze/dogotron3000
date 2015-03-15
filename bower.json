@@ -1,0 +1,22 @@
+{
+  "name": "WebDemo",
+  "version": "0.0.1",
+  "dependencies": {
+    "mithril": "latest"
+  },
+  "private": true,
+  "authors": [
+    "Bartosz Kaliszuk <bartosz.kaliszuk@gmail.com>"
+  ],
+  "description": "Turnedog new site",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib/bower",
+    "test",
+    "tests"
+  ]
+}

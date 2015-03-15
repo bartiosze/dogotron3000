@@ -3,4 +3,5 @@
 Portfolio for Turne.
 
 Should use mithril and gulp for builds.
-We will see how it end...
+
+We will see how it ends...
