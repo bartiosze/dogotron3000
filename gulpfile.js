@@ -13,7 +13,7 @@ gulp.task('index', function () {
   // It's not necessary to read the files (will speed up things), we're only after their paths:
   var sources = gulp.src(['./src/**/*.js', './src/**/*.css'], {read: false});
 
-  return target
+  return gulp.src(target)
     .pipe(plugins.inject(sources))
     .pipe(plugins.inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower'}))
     .pipe(gulp.dest('./build'));
