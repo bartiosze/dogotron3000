@@ -43,9 +43,13 @@ gulp.task('pages', function () {
     .pipe(plugins.concat('vendor.css'))
     .pipe(gulp.dest('./build'));
   gulp.src(target)
-    .pipe(plugins.inject(gulp.src('./build/app.js')))
-    .pipe(plugins.inject(gulp.src(vendorFiles), {name: 'bower'}))
-    .pipe(gulp.dest('./build'));
+    .pipe(plugins.inject(gulp.src('./build/app.js', { relative: true,
+                                                      addPrefix: './dogotron3000',
+                                                      addRootSlash: false})))
+    .pipe(plugins.inject(gulp.src(vendorFiles), { name: 'bower',
+                                                  addPrefix: './dogotron3000',
+                                                  addRootSlash: false}))
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('clean-tmp', function(){
