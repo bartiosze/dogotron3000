@@ -43,8 +43,7 @@ gulp.task('pages', function () {
     .pipe(plugins.concat('vendor.css'))
     .pipe(gulp.dest('./build'));
   gulp.src(target)
-    .pipe(plugins.inject(gulp.src('./build/app.js', { relative: true,
-                                                      addRootSlash: false})))
+    .pipe(plugins.inject(gulp.src('./build/app.js', { addRootSlash: false})))
     .pipe(plugins.inject(gulp.src(vendorFiles), { name: 'bower',
                                                   addRootSlash: false}))
     .pipe(gulp.dest('./'));
