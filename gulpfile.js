@@ -53,7 +53,7 @@ gulp.task('clean-tmp', function(){
     .pipe(plugins.clean());
 });
 gulp.task('clean-build', function(){
-  return gulp.src('build', {read: false})
+  return gulp.src(['build', 'index.html'], {read: false})
     .pipe(plugins.clean());
 });
 gulp.task('clean', ['clean-tmp', 'clean-build']);
