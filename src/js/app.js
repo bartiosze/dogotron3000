@@ -8,7 +8,8 @@ app.controller = function(data) {
     height: 143,
     frames: 11,
     framesX: 11,
-    frameTime: 100
+    frameTime: 100,
+    animate: false
   });
   this.spriteApi = m.prop({});
   this.toggleAnimation = function(){
@@ -28,8 +29,8 @@ app.view = function(ctrl){
         m("h2.content-subhead", "~10fps"),
         m("#spritespin",
           {config: spriteSpin(ctrl),
-           onmouseout: ctrl.toggleAnimation,
-           onmouseover: ctrl.stopAnimation
+           onmouseout: ctrl.stopAnimation,
+           onmouseover: ctrl.toggleAnimation
           })
       ]))
   ]);
