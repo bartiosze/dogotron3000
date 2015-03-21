@@ -3,8 +3,10 @@ var gulp = require('gulp'),
     wiredep = require('wiredep').stream,
     plugins = require('gulp-load-plugins')();
 
-var target = gulp.src('./html/index.html');
-var vendorFiles = gulp.src(['./build/vendor.js', './build/vendor.css']);
+var target = './html/index.html';
+var vendorFiles = ['./build/vendor.js', './build/vendor.css'];
+var ownFiles = './src/js/*.js';
+
 gulp.task('default', ['pages']);
 
 gulp.task('index', function () {
@@ -22,20 +24,36 @@ gulp.task('index', function () {
 // 2. concat vendor scripts
 // 3. inject vendor scripts
 gulp.task('pages', function () {
-  // first copy bower main files to build directory
+  // first copy bower main files and app files to build directory
+  gulp.src(ownFiles)
+    .pipe(plugins.uglify())
+    .pipe(plugins.concat('app.js'))
+    .pipe(gulp.dest('./build'));
+    // .pipe(plugins.copy('build/own', {prefix: 1}));
   gulp.src(bowerFiles())
-    .pipe(plugins.copy('build/vendors', {prefix: 2}));
+    .pipe(plugins.copy('tmp/vendors', {prefix: 2}));
   // now handle *.js files
-  gulp.src('build/vendors/**/*.js')
+  gulp.src('tmp/vendors/**/*.js')
     .pipe(plugins.uglify())
     .pipe(plugins.concat('vendor.js'))
     .pipe(gulp.dest('./build'));
   // do the same for css
-  gulp.src('build/vendors/**/*.css')
+  gulp.src('tmp/vendors/**/*.css')
     .pipe(plugins.minifyCss())
     .pipe(plugins.concat('vendor.css'))
     .pipe(gulp.dest('./build'));
-  target
-    .pipe(plugins.inject(vendorFiles, {name: 'bower'}))
+  gulp.src(target)
+    .pipe(plugins.inject(gulp.src('./build/app.js')))
+    .pipe(plugins.inject(gulp.src(vendorFiles), {name: 'bower'}))
     .pipe(gulp.dest('./build'));
 });
+
+gulp.task('clean-tmp', function(){
+  return gulp.src('tmp', {read: false})
+    .pipe(plugins.clean());
+});
+gulp.task('clean-build', function(){
+  return gulp.src('build', {read: false})
+    .pipe(plugins.clean());
+});
+gulp.task('clean', ['clean-tmp', 'clean-build']);
