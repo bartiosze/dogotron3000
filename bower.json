@@ -14,6 +14,9 @@
     "overrides": {
         "jquery": {
             "main": "dist/jquery.min.js"
+        },
+        "spritespin": {
+            "main": "release/spritespin.min.js"
         }
     },
     "description": "Turnedog new site",
