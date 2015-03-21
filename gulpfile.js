@@ -44,10 +44,8 @@ gulp.task('pages', function () {
     .pipe(gulp.dest('./build'));
   gulp.src(target)
     .pipe(plugins.inject(gulp.src('./build/app.js', { relative: true,
-                                                      addPrefix: './dogotron3000',
                                                       addRootSlash: false})))
     .pipe(plugins.inject(gulp.src(vendorFiles), { name: 'bower',
-                                                  addPrefix: './dogotron3000',
                                                   addRootSlash: false}))
     .pipe(gulp.dest('./'));
 });
