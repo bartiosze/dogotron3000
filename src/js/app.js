@@ -9,7 +9,8 @@ app.controller = function(data) {
     frames: 11,
     framesX: 11,
     frameTime: 100,
-    animate: false
+    animate: false,
+    frame:Math.floor(131*Math.random()%11)
   });
   this.spriteApi = m.prop({});
   this.toggleAnimation = function(){
