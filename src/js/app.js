@@ -3,14 +3,14 @@ var app = {};
 app.controller = function(data) {
   this.active = m.prop(false);
   this.spriteConfig = m.prop({
-    source:  '/static/images/horizontal.png',
+    source:  '/static/images/horizontal_10.png',
     width: 272,
     height: 143,
-    frames: 11,
-    framesX: 11,
+    frames: 10,
+    framesX: 10,
     frameTime: 100,
     animate: false,
-    frame:Math.floor(131*Math.random()%11)
+    frame:Math.floor(131*Math.random()%10)
   });
   this.spriteApi = m.prop({});
   this.toggleAnimation = function(){
